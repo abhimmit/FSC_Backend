@@ -1,0 +1,28 @@
+{
+  "name": "FSC",
+  "version": "1.0.0",
+  "description": "Farida's Stress Counseling",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamshaunjp/rest-api-playlist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamshaunjp/rest-api-playlist/issues"
+  },
+  "homepage": "https://github.com/iamshaunjp/rest-api-playlist#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.14.1",
+    "nodemailer": "^6.2.1",
+    "webpack": "^4.35.0"
+  }
+}
