@@ -18,6 +18,10 @@ async function sendGmail(req , res ){
     auth: {
       user: process.env.MY_GMAIL_EMAIL,
       pass: process.env.MY_GMAIL_PASSWORD
+    },
+	tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
     }
   });
                                                     
