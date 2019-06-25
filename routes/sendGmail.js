@@ -12,18 +12,18 @@ async function sendGmail(req , res ){
   
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: process.env.SMTP_SERVER,
+    host: process.env.SMTP_GMAIL_SERVER,
     port: 465,
     secure: true, // true for 465, false for other ports like 587
     auth: {
-      user: process.env.MY_EMAIL,
-      pass: process.env.MY_PASSWORD
+      user: process.env.MY_GMAIL_EMAIL,
+      pass: process.env.MY_GMAIL_PASSWORD
     }
   });
                                                     
 	var mailOptions = {
-		from: `Farida's Stress Counseling <${data.email}>`, 
-		to: process.env.MY_EMAIL,
+		from: `<${process.env.MY_GMAIL_EMAIL}>`, 
+		to: process.env.MY_GMAIL_EMAIL,
 		subject: data.subject, 
 		text: data.description, 
 		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, 

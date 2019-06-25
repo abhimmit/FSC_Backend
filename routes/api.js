@@ -8,8 +8,11 @@ const sendHotmail = require('./sendHotmail.js');
 
 router.post('/sendmail' , function(req, res, next){
 
-		// const response = sendGmail(req , res);
-		const response = sendHotmail(req , res);
+		if( process.env.EMAIL_TO_USE.toUpperCase() === 'GMAIL' ) {
+			const response = sendGmail(req , res);
+		}else{
+			const response = sendHotmail(req , res);
+		}
 		
         
 });

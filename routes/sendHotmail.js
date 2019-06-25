@@ -15,8 +15,8 @@ const nodemailer = require("nodemailer");
 	 var transporter = nodemailer.createTransport({
 		service: "Hotmail",
 		auth: {
-			user: 'abhimmit@hotmail.com',
-			pass: 'pater1959'
+			user: process.env.MY_HOTMAIL_EMAIL,
+			pass: process.env.MY_HOTMAIL_PASSWORD,
 		},
 		tls: {
 		   ciphers:'SSLv3',
@@ -29,8 +29,8 @@ const nodemailer = require("nodemailer");
 
 	// setup e-mail data, even with unicode symbols
 	var mailOptions = {
-		from: `Farida's Stress Counseling <abhimmit@hotmail.com>`, // sender address (who sends)
-		to: 'abhimmit@hotmail.com', // list of receivers (who receives)
+		from: `< ${ process.env.MY_HOTMAIL_EMAIL } >`, // sender address (who sends)
+		to: process.env.MY_HOTMAIL_EMAIL, // list of receivers (who receives)
 		subject: data.subject, // Subject line
 		text: data.description, // plaintext body
 		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, // html body
