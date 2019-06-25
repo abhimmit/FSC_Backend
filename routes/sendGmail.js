@@ -17,14 +17,15 @@ async function sendGmail(req , res ){
     port: 465,
     secure: true, // true for 465, false for other ports like 587
     auth: {
-      user: process.env.MY_GMAIL_EMAIL,
-      pass: process.env.MY_GMAIL_PASSWORD
+		type: 'login',
+		user: process.env.MY_GMAIL_EMAIL,
+		pass: process.env.MY_GMAIL_PASSWORD
     },
 	tls: {
         // do not fail on invalid certs
         rejectUnauthorized: false
     }
-  });
+	});
                                                     
 	var mailOptions = {
 		from: `<${process.env.MY_GMAIL_EMAIL}>`, 

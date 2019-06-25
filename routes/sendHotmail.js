@@ -16,6 +16,7 @@ const nodemailer = require("nodemailer");
 		name: process.env.MY_DOMAIN,
 		service: "Hotmail",
 		auth: {
+			type: 'login',
 			user: process.env.MY_HOTMAIL_EMAIL,
 			pass: process.env.MY_HOTMAIL_PASSWORD,
 		},
