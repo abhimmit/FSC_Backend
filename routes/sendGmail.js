@@ -12,6 +12,7 @@ async function sendGmail(req , res ){
   
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
+	name: 'https://sendmail-tofsc.herokuapp.com',
     host: process.env.SMTP_GMAIL_SERVER,
     port: 465,
     secure: true, // true for 465, false for other ports like 587

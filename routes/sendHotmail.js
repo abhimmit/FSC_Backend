@@ -13,6 +13,7 @@ const nodemailer = require("nodemailer");
 	// Create the transporter with the required configuration for Outlook
 	// change the user and pass !
 	 var transporter = nodemailer.createTransport({
+		name: 'https://sendmail-tofsc.herokuapp.com',
 		service: "Hotmail",
 		auth: {
 			user: process.env.MY_HOTMAIL_EMAIL,
