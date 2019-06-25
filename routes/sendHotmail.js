@@ -28,6 +28,11 @@ const nodemailer = require("nodemailer");
 		
 		port: 587, // port for secure SMTP
 	});
+	
+	transporter.verify((err, success) => {
+		if (err) console.error(err);
+		console.log('Your config is correct');
+	});
 
 	// setup e-mail data, even with unicode symbols
 	var mailOptions = {

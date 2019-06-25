@@ -26,6 +26,11 @@ async function sendGmail(req , res ){
         rejectUnauthorized: false
     }
 	});
+	
+	transporter.verify((err, success) => {
+		if (err) console.error(err);
+		console.log('Your config is correct');
+	});
                                                     
 	var mailOptions = {
 		from: `<${process.env.MY_GMAIL_EMAIL}>`, 
