@@ -30,7 +30,10 @@ const nodemailer = require("nodemailer");
 	});
 	
 	transporter.verify((err, success) => {
-		if (err) console.error(err);
+		if (err) {
+			console.error(err);
+			return;
+		};
 		console.log('Your config is correct');
 	});
 

@@ -28,7 +28,10 @@ async function sendGmail(req , res ){
 	});
 	
 	transporter.verify((err, success) => {
-		if (err) console.error(err);
+		if (err) {
+			console.error(err);
+			return;
+		};
 		console.log('Your config is correct');
 	});
                                                     
