@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "name": "Farida's Stress Counseling",
+  "alias": "fsc.com",
+  "builds": [{ "src": "*.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/.*", "dest": "index.js" }]
+}
