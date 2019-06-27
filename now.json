@@ -1,7 +1,18 @@
 {
   "version": 2,
-  "name": "Farida's Stress Counseling",
-  "alias": "fsc.com",
-  "builds": [{ "src": "*.js", "use": "@now/node-server" }],
-  "routes": [{ "src": "/.*", "dest": "index.js" }]
+  "name": "sendmail-tofsp",
+  "builds": [{ "src": "*.js", "use": "@now/node" }],
+  "routes": [{ "src": "/.*", "dest": "index.js" }],
+  "build": {
+	  "env": {
+		"PORT": "5000",
+		"EMAIL_TO_USE": "hotmail",
+		"MY_GMAIL_EMAIL": "abhimmit@gmail.com",
+		"MY_GMAIL_PASSWORD": "Zorro1159##",
+		"SMTP_GMAIL_SERVER": "smtp.gmail.com",
+		"MY_HOTMAIL_EMAIL": "abhimmit@hotmail.com",
+		"MY_HOTMAIL_PASSWORD": "pater1959",
+		"SMTP_HOTMAIL_SERVER": "Hotmail"
+	  }
+	}
 }
