@@ -15,17 +15,16 @@ const nodemailer = require("nodemailer");
 	 var transporter = nodemailer.createTransport({
 		service: process.env.SMTP_HOTMAIL_SERVER,
 		auth: {
-			type: 'login',
-			user: process.env.MY_HOTMAIL_EMAIL,
+			user: process.env.MY_HOTMAIL_FROMADDRESS,
 			pass: process.env.MY_HOTMAIL_PASSWORD,
-		}
-		//tls: {
-		//   ciphers:'SSLv3',
-		//  rejectUnauthorized: false
-		// },
-		// secureConnection: false, // TLS requires secureConnection to be false
+		},
+		tls: {
+			ciphers:'SSLv3',
+			rejectUnauthorized: false
+		},
+		secureConnection: false, // TLS requires secureConnection to be false
 		
-		// port: 587, // port for secure SMTP
+		port: 587, // port for secure SMTP
 	});
 	
 	transporter.verify((err, success) => {
@@ -39,8 +38,8 @@ const nodemailer = require("nodemailer");
 
 	// setup e-mail data, even with unicode symbols
 	var mailOptions = {
-		from: `<${process.env.MY_SENDFROM_ADDRESS}>`, // sender address (who sends)
-		to: process.env.MY_HOTMAIL_EMAIL, // list of receivers (who receives)
+		from: `<${process.env.MY_HOTMAIL_FROMADDRESS}>`, // sender address (who sends)
+		to: process.env.MY_HOTMAIL_TOADDRESS, // list of receivers (who receives)
 		subject: data.subject, // Subject line
 		text: data.description, // plaintext body
 		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, // html body

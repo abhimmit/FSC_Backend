@@ -14,7 +14,7 @@ async function sendGmail(req , res ){
   let transporter = nodemailer.createTransport({
 	service: process.env.SMTP_GMAIL_SERVER,
     auth: {
-		user: process.env.MY_GMAIL_EMAIL,
+		user: process.env.MY_GMAIL_FROMADDRESS,
 		pass: process.env.MY_GMAIL_PASSWORD
     }
 	//port: 465,
@@ -34,8 +34,8 @@ async function sendGmail(req , res ){
 	});
                                                     
 	var mailOptions = {
-		from: `<${process.env.MY_SENDFROM_ADDRESS}>`, 
-		to: process.env.MY_GMAIL_EMAIL,
+		from: `<${process.env.MY_GMAIL_FROMADDRESS}>`, 
+		to: process.env.MY_GMAIL_TOADDRESS,
 		subject: data.subject, 
 		text: data.description, 
 		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, 
