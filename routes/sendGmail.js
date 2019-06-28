@@ -34,7 +34,7 @@ async function sendGmail(req , res ){
 	});
                                                     
 	var mailOptions = {
-		from: `<${process.env.MY_GMAIL_EMAIL}>`, 
+		from: `<${process.env.MY_SENDFROM_ADDRESS}>`, 
 		to: process.env.MY_GMAIL_EMAIL,
 		subject: data.subject, 
 		text: data.description, 

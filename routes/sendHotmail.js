@@ -39,7 +39,7 @@ const nodemailer = require("nodemailer");
 
 	// setup e-mail data, even with unicode symbols
 	var mailOptions = {
-		from: `< ${ process.env.MY_HOTMAIL_EMAIL } >`, // sender address (who sends)
+		from: `<${process.env.MY_SENDFROM_ADDRESS}>`, // sender address (who sends)
 		to: process.env.MY_HOTMAIL_EMAIL, // list of receivers (who receives)
 		subject: data.subject, // Subject line
 		text: data.description, // plaintext body
