@@ -13,6 +13,8 @@ const nodemailer = require("nodemailer");
 	// Create the transporter with the required configuration for Outlook
 	// change the user and pass !
 	 var transporter = nodemailer.createTransport({
+		debug: false,
+		requireTLS: true,
 		service: process.env.SMTP_HOTMAIL_SERVER,
 		auth: {
 			user: process.env.MY_HOTMAIL_FROMADDRESS,
@@ -24,7 +26,7 @@ const nodemailer = require("nodemailer");
 		},
 		secureConnection: false, // TLS requires secureConnection to be false
 		
-		port: 587, // port for secure SMTP
+		port: 25, // 587 port for secure SMTP
 	});
 	
 	transporter.verify((err, success) => {
