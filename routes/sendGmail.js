@@ -29,7 +29,7 @@ async function sendGmail(req , res ){
 		if (err) {
 			console.error(err);
 		}else{
-			console.log('Your config is correct');
+			// console.log('Your config is correct');
 		};
 	});
                                                     

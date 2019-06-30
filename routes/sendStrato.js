@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   // let testAccount = await nodemailer.createTestAccount();
-	
+  
 	let data = req.body.data;
 	
 	process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -13,12 +13,10 @@ const nodemailer = require("nodemailer");
 	// Create the transporter with the required configuration for Outlook
 	// change the user and pass !
 	 var transporter = nodemailer.createTransport({
-		debug: false,
-		requireTLS: true,
-		service: process.env.SMTP_HOTMAIL_SERVER,
+		host: process.env.SMTP_STRATO_SERVER,
 		auth: {
-			user: process.env.MY_HOTMAIL_FROMADDRESS,
-			pass: process.env.MY_HOTMAIL_PASSWORD,
+			user: process.env.MY_STRATO_FROMADDRESS,
+			pass: process.env.MY_STRATO_PASSWORD,
 		},
 		tls: {
 			ciphers:'SSLv3',
@@ -26,7 +24,7 @@ const nodemailer = require("nodemailer");
 		},
 		secureConnection: false, // TLS requires secureConnection to be false
 		
-		port: 25, // 587 port for secure SMTP
+		port: 465, // 587 port for secure SMTP
 	});
 	
 	transporter.verify((err, success) => {
@@ -39,8 +37,8 @@ const nodemailer = require("nodemailer");
 
 	// setup e-mail data, even with unicode symbols
 	var mailOptions = {
-		from: `<${process.env.MY_HOTMAIL_FROMADDRESS}>`, // sender address (who sends)
-		to: process.env.MY_HOTMAIL_TOADDRESS, // list of receivers (who receives)
+		from: `<${process.env.MY_STRATO_FROMADDRESS}>`, // sender address (who sends)
+		to: process.env.MY_STRATO_TOADDRESS, // list of receivers (who receives)
 		subject: data.subject, // Subject line
 		text: data.description, // plaintext body
 		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, // html body
