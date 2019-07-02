@@ -62,8 +62,8 @@ app.use(function(err, req, res, next){
 });
 
 // listen for requests
-let port = process.env.PORT;
-var listener = app.listen( port || 4000 , function() {
+// let port = process.env.PORT;
+var listener = app.listen( { port: process.env.PORT || 4000 } , function() {
 
 		console.log(`now listening for requests to ${ listener.address().port }`);
 	});
