@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+var sanitizeHtml = require('sanitize-html')
 
 // async..await is not allowed in global scope, must use a wrapper
 async function sendGmail(req , res ){
@@ -36,9 +37,10 @@ async function sendGmail(req , res ){
 	var mailOptions = {
 		from: `<${process.env.MY_GMAIL_FROMADDRESS}>`, 
 		to: process.env.MY_GMAIL_TOADDRESS,
-		subject: data.subject, 
-		text: data.description, 
-		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, 
+		subject: sanitize(data.subject),
+		text: sanitize(data.description), 
+		html: `<h3>Van : ${ sanitize(data.name) }</h3> Email adres : ${ sanitize(data.email) } <br> Telefoon : 
+				${ sanitize(data.telephone) } <br> <p> ${ sanitize(data.description) }</p>`, // html body 
 	};
 	
 	// send mail with defined transport object                                                  
@@ -60,7 +62,12 @@ async function sendGmail(req , res ){
         return res.status(500).send({
             message: "Failed"
         });
-    }
+    };
+	
+	function sanitize(input){
+		return sanitizeHtml(input, {allowedTags: [ ],  allowedAttributes: {} });
+		
+	}
 }
 
 module.exports = sendGmail;

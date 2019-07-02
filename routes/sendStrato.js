@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+var sanitizeHtml = require('sanitize-html')
 
 // async..await is not allowed in global scope, must use a wrapper
  async function sendHotmail(req , res){
@@ -39,9 +40,11 @@ const nodemailer = require("nodemailer");
 	var mailOptions = {
 		from: `<${process.env.MY_STRATO_FROMADDRESS}>`, // sender address (who sends)
 		to: process.env.MY_STRATO_TOADDRESS, // list of receivers (who receives)
-		subject: data.subject, // Subject line
-		text: data.description, // plaintext body
-		html: `<h3><b>Van : ${ data.name }</b></h3> Email adres : ${data.email} <br> Telefoon : ${data.telephone} <br> <p> ${ data.description } </p>`, // html body
+		subject: sanitize(data.subject), // Subject line
+		text: sanitize(data.description), // plaintext body
+		
+		html: `<h3>Van : ${ sanitize(data.name) }</h3> Email adres : ${ sanitize(data.email) } <br> Telefoon : 
+		${ sanitize(data.telephone) } <br> <p> ${ sanitize(data.description) }</p>`, // html body
 	};
 	// html: '<b>Hello world </b><br> This is the first email sent with Nodemailer in Node.js' // html body
 	
@@ -64,6 +67,11 @@ const nodemailer = require("nodemailer");
         return res.status(500).send({
             message: "Failed"
         });
-    }
+    };
+	
+	function sanitize(input){
+		return sanitizeHtml(input, {allowedTags: [ ],  allowedAttributes: {} });
+		
+	}
 }
 module.exports = sendHotmail;
